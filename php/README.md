@@ -15,8 +15,7 @@ The build is automated, so that the images should always be up-to-date with the 
 
 ## Installed PHP packages
 
-All images share the PHP packages listed in 
-[`php/scripts/install-packages.sh`](https://github.com/kreait/docker-images/blob/master/php/scripts/install-packages.sh).
+All images share the PHP packages listed in [`php/scripts/install-packages.sh`](https://github.com/kreait/docker-images/blob/master/php/scripts/install-packages.sh).
 
 The `*-fpm` images include the `php7-fpm` package.
 
