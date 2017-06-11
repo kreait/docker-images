@@ -15,13 +15,45 @@ The build is automated, so that the images should always be up-to-date with the 
 
 ## Installed PHP packages
 
-All images share the PHP packages listed in [`php/scripts/install-packages.sh`](https://github.com/kreait/docker-images/blob/master/php/scripts/install-packages.sh).
+The images include the same PHP extensions as the official PHP images, `php7-xdebug` being the only
+added extension on the `*-dev` images.
 
-The `*-fpm` images include the `php7-fpm` package.
+```
+[PHP Modules]
+Core
+ctype
+curl
+date
+dom
+fileinfo
+filter
+ftp
+hash
+iconv
+json
+libxml
+mbstring
+mysqlnd
+openssl
+pcre
+PDO
+pdo_sqlite
+Phar
+posix
+readline
+Reflection
+session
+SimpleXML
+SPL
+sqlite3
+standard
+tokenizer
+xml
+xmlreader
+xmlwriter
+zlib
+```
 
-The `*-dev` images include the `php7-phpdbg` and `php7-xdebug` packages.
+## `www-data` user
 
-## Image additions
-
-As it is very likely that PHP is used in combination with a webserver, all images include a
-`www-data` user (UID 82, GID 82 - 82 is the standard uid/gid for `www-data` in Alpine).
+Same as in the official PHP images, and as it is very likely that PHP is used in combination with a webserver, all images include a `www-data` user (UID 82, GID 82 - 82 is the standard uid/gid for `www-data` in Alpine).

@@ -5,7 +5,7 @@ clean:
 	docker image rm $(docker images -q kreait/php) || true
 	docker image rm $(docker images -q kreait/php) || true
 
-test: test-php-7 test-php-7-dev test-php-7-fpm test-php-7-fpm-dev
+test: test-php-7 test-php-7-dev test-php-7-fpm test-php-7-fpm-dev compare-extensions
 
 .PHONY: php-7
 php-7:
@@ -58,3 +58,10 @@ test-php-7-fpm-dev:
 	docker exec kreait-php-7-fpm-dev sh -c "php --version" | grep 'Xdebug'
 	docker logs kreait-php-7-fpm-dev 2>&1 | grep 'fpm is running'
 	docker rm -f kreait-php-7-fpm-dev
+
+.PHONY: compare-extensions
+compare-extensions:
+	docker run --rm php:7 sh -c "php -m" > theirs.txt
+	docker run --rm kreait/php:7 sh -c "php -m" > ours.txt
+	diff theirs.txt ours.txt
+	rm theirs.txt ours.txt
