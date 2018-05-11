@@ -2,6 +2,7 @@
 set -ex
 
 apk --no-cache add \
+    bash \
     php7 \
     php7-ctype \
     php7-curl \
