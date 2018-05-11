@@ -1,6 +1,6 @@
 # Docker PHP Images
 
-Docker images built on top of [Alpine 3.6](https://hub.docker.com/r/_/alpine/) with the latest stable PHP Version (7.1) and common and useful extensions.
+Docker images built on top of [Alpine 3.7](https://hub.docker.com/r/_/alpine/) with the latest stable PHP Version (7.1) and common and useful extensions.
 
 The build is automated, so that the images should always be up-to-date with the Dockerfiles in the [GitHub repository](https://github.com/kreait/docker-images).
 
