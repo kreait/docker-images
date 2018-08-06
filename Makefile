@@ -65,3 +65,10 @@ compare-extensions:
 	docker run --rm kreait/php:7 sh -c "php -m" > ours.txt
 	diff theirs.txt ours.txt
 	rm theirs.txt ours.txt
+
+.PHONY: deploy
+deploy:
+	docker push kreait/php:7
+	docker push kreait/php:7-dev
+	docker push kreait/php:7-fpm
+	docker push kreait/php:7-fpm-dev
