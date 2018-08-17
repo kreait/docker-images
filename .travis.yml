@@ -5,14 +5,5 @@ language: ruby
 services:
   - docker
 
-env:
-  - TARGET=php-7
-  - TARGET=php-7-dev
-  - TARGET=php-7-fpm
-  - TARGET=php-7-fpm-dev
-
-install:
-- make ${TARGET}
-
 script:
-- make test-${TARGET}
+- make

@@ -4,7 +4,7 @@
 
 ## PHP
 
-Docker images built on top of [Alpine 3.7](https://hub.docker.com/r/_/alpine/) with the latest stable PHP Version (7.1) and common and useful extensions.
+Docker images built on top of Alpine Linux with the latest stable PHP Version and common and useful extensions.
 
 | Image  | Dockerfile |Size |
 | --- | --- | --- |
@@ -12,3 +12,7 @@ Docker images built on top of [Alpine 3.7](https://hub.docker.com/r/_/alpine/) w
 | kreait/php:7-dev  | [php/7-dev/Dockerfile](https://github.com/kreait/docker-images/blob/master/php/7-dev/Dockerfile) | [![](https://images.microbadger.com/badges/image/kreait/php:7-dev.svg)](https://microbadger.com/images/kreait/php:7-dev) |
 | kreait/php:7-fpm  | [php/7-fpm/Dockerfile](https://github.com/kreait/docker-images/blob/master/php/7-fpm/Dockerfile) | [![](https://images.microbadger.com/badges/image/kreait/php:7-fpm.svg)](https://microbadger.com/images/kreait/php:7-fpm) |
 | kreait/php:7-fpm-dev  | [php/7-fpm-dev/Dockerfile](https://github.com/kreait/docker-images/blob/master/php/7-fpm-dev/Dockerfile) | [![](https://images.microbadger.com/badges/image/kreait/php:7-fpm-dev.svg)](https://microbadger.com/images/kreait/php:7-fpm-dev) |
+| kreait/php:7.2  | [php/7.2/Dockerfile](https://github.com/kreait/docker-images/blob/master/php/7.2/Dockerfile) | [![](https://images.microbadger.com/badges/image/kreait/php:7.2.svg)](https://microbadger.com/images/kreait/php:7.2) |
+| kreait/php:7.2-dev  | [php/7.2-dev/Dockerfile](https://github.com/kreait/docker-images/blob/master/php/7.2-dev/Dockerfile) | [![](https://images.microbadger.com/badges/image/kreait/php:7.2-dev.svg)](https://microbadger.com/images/kreait/php:7.2-dev) |
+| kreait/php:7.2-fpm  | [php/7.2-fpm/Dockerfile](https://github.com/kreait/docker-images/blob/master/php/7.2-fpm/Dockerfile) | [![](https://images.microbadger.com/badges/image/kreait/php:7.2-fpm.svg)](https://microbadger.com/images/kreait/php:7.2-fpm) |
+| kreait/php:7.2-fpm-dev  | [php/7.2-fpm-dev/Dockerfile](https://github.com/kreait/docker-images/blob/master/php/7.2-fpm-dev/Dockerfile) | [![](https://images.microbadger.com/badges/image/kreait/php:7.2-fpm-dev.svg)](https://microbadger.com/images/kreait/php:7.2-fpm-dev) |

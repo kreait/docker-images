@@ -1,70 +1,35 @@
-all: php-7 php-7-dev php-7-fpm php-7-fpm-dev ## Builds all images
+.PHONY: all
+all: build test
 
-.PHONY: clean
-clean:
-	docker image rm $(docker images -q kreait/php) || true
-	docker image rm $(docker images -q kreait/php) || true
+.PHONY: build
+build:
+	docker build -f php/7/Dockerfile -t kreait/php:7 php
+	docker build -f php/7-dev/Dockerfile -t kreait/php:7-dev php
+	docker build -f php/7-fpm/Dockerfile -t kreait/php:7-fpm php
+	docker build -f php/7-fpm-dev/Dockerfile -t kreait/php:7-fpm-dev php
 
-test: test-php-7 test-php-7-dev test-php-7-fpm test-php-7-fpm-dev compare-extensions
+	docker build -f php/7.2/Dockerfile -t kreait/php:7.2 php
+	docker build -f php/7.2-dev/Dockerfile -t kreait/php:7.2-dev php
+	docker build -f php/7.2-fpm/Dockerfile -t kreait/php:7.2-fpm php
+	docker build -f php/7.2-fpm-dev/Dockerfile -t kreait/php:7.2-fpm-dev php
 
-.PHONY: php-7
-php-7:
-	docker build \
-		-f php/7/Dockerfile \
-		-t kreait/php:7 \
-		php
+.PHONY: test
+test:
+	docker run --rm kreait/php:7 php -v | grep '7.1'
+	docker run --rm kreait/php:7-dev php -v | grep '7.1'
+	docker run --rm kreait/php:7-fpm php -v | grep '7.1'
+	docker run --rm kreait/php:7-fpm-dev php -v | grep '7.1'
 
-.PHONY: test-php-7
-test-php-7:
-	docker run -t kreait/php:7 --version | grep '7.1'
+	docker run --rm kreait/php:7.2 php -v | grep '7.2'
+	docker run --rm kreait/php:7.2-dev php -v | grep '7.2'
+	docker run --rm kreait/php:7.2-fpm php -v | grep '7.2'
+	docker run --rm kreait/php:7.2-fpm-dev php -v | grep '7.2'
 
-.PHONY: php-7-dev
-php-7-dev:
-	docker build \
-		-f php/7-dev/Dockerfile \
-		-t kreait/php:7-dev \
-		php
+	docker run --rm kreait/php:7-dev php -v | grep 'Xdebug'
+	docker run --rm kreait/php:7-fpm-dev php -v | grep 'Xdebug'
+	docker run --rm kreait/php:7.2-dev php -v | grep 'Xdebug'
+	docker run --rm kreait/php:7.2-fpm-dev php -v | grep 'Xdebug'
 
-.PHONY: test-php-7-dev
-test-php-7-dev:
-	docker run -t kreait/php:7-dev --version | grep '7.1'
-	docker run -t kreait/php:7-dev --version | grep 'Xdebug'
-
-.PHONY: php-7-fpm
-php-7-fpm:
-	docker build \
-		-f php/7-fpm/Dockerfile \
-		-t kreait/php:7-fpm \
-		php
-
-.PHONY: test-php-7-fpm
-test-php-7-fpm:
-	docker run --name kreait-php-7-fpm -d kreait/php:7-fpm
-	docker exec kreait-php-7-fpm sh -c "php --version" | grep '7.1'
-	docker logs kreait-php-7-fpm 2>&1 | grep 'fpm is running'
-	docker rm -f kreait-php-7-fpm
-
-.PHONY: php-7-fpm-dev
-php-7-fpm-dev:
-	docker build \
-		-f php/7-fpm-dev/Dockerfile \
-		-t kreait/php:7-fpm-dev \
-		php
-
-.PHONY: test-php-7-fpm-dev
-test-php-7-fpm-dev:
-	docker run --name kreait-php-7-fpm-dev -d kreait/php:7-fpm-dev
-	docker exec kreait-php-7-fpm-dev sh -c "php --version" | grep '7.1'
-	docker exec kreait-php-7-fpm-dev sh -c "php --version" | grep 'Xdebug'
-	docker logs kreait-php-7-fpm-dev 2>&1 | grep 'fpm is running'
-	docker rm -f kreait-php-7-fpm-dev
-
-.PHONY: compare-extensions
-compare-extensions:
-	docker run --rm php:7 sh -c "php -m" > theirs.txt
-	docker run --rm kreait/php:7 sh -c "php -m" > ours.txt
-	diff theirs.txt ours.txt
-	rm theirs.txt ours.txt
 
 .PHONY: deploy
 deploy:
@@ -72,3 +37,12 @@ deploy:
 	docker push kreait/php:7-dev
 	docker push kreait/php:7-fpm
 	docker push kreait/php:7-fpm-dev
+
+	docker push kreait/php:7.2
+	docker push kreait/php:7.2-dev
+	docker push kreait/php:7.2-fpm
+	docker push kreait/php:7.2-fpm-dev
+
+.PHONY: clean
+clean:
+	docker image ls -q kreait/php | xargs docker rmi -f
