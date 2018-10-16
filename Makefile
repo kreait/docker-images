@@ -15,20 +15,20 @@ build:
 
 .PHONY: test
 test:
-	docker run --rm kreait/php:7 php -v | grep '7.1'
-	docker run --rm kreait/php:7-dev php -v | grep '7.1'
-	docker run --rm kreait/php:7-fpm php -v | grep '7.1'
-	docker run --rm kreait/php:7-fpm-dev php -v | grep '7.1'
+	docker run --rm kreait/php:7 bash -c "php -v | grep '7\.1'"
+	docker run --rm kreait/php:7-dev bash -c "php -v | grep '7\.1'"
+	docker run --rm kreait/php:7-fpm bash -c "php -v | grep '7\.1'"
+	docker run --rm kreait/php:7-fpm-dev bash -c "php -v | grep '7\.1'"
 
-	docker run --rm kreait/php:7.2 php -v | grep '7.2'
-	docker run --rm kreait/php:7.2-dev php -v | grep '7.2'
-	docker run --rm kreait/php:7.2-fpm php -v | grep '7.2'
-	docker run --rm kreait/php:7.2-fpm-dev php -v | grep '7.2'
+	docker run --rm kreait/php:7.2 bash -c "php -v | grep '7\.2'"
+	docker run --rm kreait/php:7.2-dev bash -c "php -v | grep '7\.2'"
+	docker run --rm kreait/php:7.2-fpm bash -c "php -v | grep '7\.2'"
+	docker run --rm kreait/php:7.2-fpm-dev bash -c "php -v | grep '7\.2'"
 
-	docker run --rm kreait/php:7-dev php -v | grep 'Xdebug'
-	docker run --rm kreait/php:7-fpm-dev php -v | grep 'Xdebug'
-	docker run --rm kreait/php:7.2-dev php -v | grep 'Xdebug'
-	docker run --rm kreait/php:7.2-fpm-dev php -v | grep 'Xdebug'
+	docker run --rm kreait/php:7-dev bash -c "php -v | grep 'Xdebug'"
+	docker run --rm kreait/php:7-fpm-dev bash -c "php -v | grep 'Xdebug'"
+	docker run --rm kreait/php:7.2-dev bash -c "php -v | grep 'Xdebug'"
+	docker run --rm kreait/php:7.2-fpm-dev bash -c "php -v | grep 'Xdebug'"
 
 
 .PHONY: deploy
