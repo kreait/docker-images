@@ -6,6 +6,8 @@
 
 Docker images built on top of Alpine Linux with the latest stable PHP Version and common and useful extensions.
 
+The images are automatically re-built and published on a weekly basis.
+
 | Image  | Dockerfile |Size |
 | --- | --- | --- |
 | kreait/php:7  | [php/7/Dockerfile](https://github.com/kreait/docker-images/blob/master/php/7/Dockerfile) | [![](https://images.microbadger.com/badges/image/kreait/php:7.svg)](https://microbadger.com/images/kreait/php:7) |

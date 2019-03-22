@@ -4,6 +4,8 @@ Docker images built on top of Alpine Linux with the latest stable PHP Version an
 
 https://github.com/kreait/docker-images
 
+The images are automatically re-built and published on a weekly basis.
+
 ## Available tags and information
 
 | Image  | Dockerfile |Size |
