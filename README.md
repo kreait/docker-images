@@ -1,6 +1,7 @@
 # Docker Images
 
 [![Build Status](https://travis-ci.org/kreait/docker-images.svg?branch=master)](https://travis-ci.org/kreait/docker-images)
+[![Discord](https://img.shields.io/discord/523866370778333184.svg?color=7289da&logo=discord)](https://discord.gg/p4W55UM)
 
 ## PHP
 
