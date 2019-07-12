@@ -1,47 +1,63 @@
 .PHONY: all
-all: build test
+all: php test-php
 
-.PHONY: build
-build:
-	docker build -f php/7/Dockerfile -t kreait/php:7 php
-	docker build -f php/7-dev/Dockerfile -t kreait/php:7-dev php
-	docker build -f php/7-fpm/Dockerfile -t kreait/php:7-fpm php
-	docker build -f php/7-fpm-dev/Dockerfile -t kreait/php:7-fpm-dev php
+.PHONY: php
+php:
+	docker build --build-arg ALPINE_VERSION=3.7 --target php -t kreait/php:7.1 -f php/Dockerfile php
+	docker build --build-arg ALPINE_VERSION=3.7 --target php-dev -t kreait/php:7.1-dev -f php/Dockerfile php
+	docker build --build-arg ALPINE_VERSION=3.7 --target php-fpm -t kreait/php:7.1-fpm -f php/Dockerfile php
+	docker build --build-arg ALPINE_VERSION=3.7 --target php-fpm-dev -t kreait/php:7.1-fpm-dev -f php/Dockerfile php
 
-	docker build -f php/7.2/Dockerfile -t kreait/php:7.2 php
-	docker build -f php/7.2-dev/Dockerfile -t kreait/php:7.2-dev php
-	docker build -f php/7.2-fpm/Dockerfile -t kreait/php:7.2-fpm php
-	docker build -f php/7.2-fpm-dev/Dockerfile -t kreait/php:7.2-fpm-dev php
+	docker build --build-arg ALPINE_VERSION=3.9 --target php -t kreait/php:7.2 -f php/Dockerfile php
+	docker build --build-arg ALPINE_VERSION=3.9 --target php-dev -t kreait/php:7.2-dev -f php/Dockerfile php
+	docker build --build-arg ALPINE_VERSION=3.9 --target php-fpm -t kreait/php:7.2-fpm -f php/Dockerfile php
+	docker build --build-arg ALPINE_VERSION=3.9 --target php-fpm-dev -t kreait/php:7.2-fpm-dev -f php/Dockerfile php
 
-.PHONY: test
-test:
-	docker run --rm kreait/php:7 bash -c "php -v | grep '7\.1'"
-	docker run --rm kreait/php:7-dev bash -c "php -v | grep '7\.1'"
-	docker run --rm kreait/php:7-fpm bash -c "php -v | grep '7\.1'"
-	docker run --rm kreait/php:7-fpm-dev bash -c "php -v | grep '7\.1'"
+	docker build --build-arg ALPINE_VERSION=3.10 --target php -t kreait/php:7.3 -f php/Dockerfile php
+	docker build --build-arg ALPINE_VERSION=3.10 --target php-dev -t kreait/php:7.3-dev -f php/Dockerfile php
+	docker build --build-arg ALPINE_VERSION=3.10 --target php-fpm -t kreait/php:7.3-fpm -f php/Dockerfile php
+	docker build --build-arg ALPINE_VERSION=3.10 --target php-fpm-dev -t kreait/php:7.3-fpm-dev -f php/Dockerfile php
+
+.PHONY: test-php
+test-php:
+	docker run --rm kreait/php:7.1 bash -c "php -v | grep '7\.1'"
+	docker run --rm kreait/php:7.1-dev bash -c "php -v | grep '7\.1'"
+	docker run --rm kreait/php:7.1-fpm bash -c "php -v | grep '7\.1'"
+	docker run --rm kreait/php:7.1-fpm-dev bash -c "php -v | grep '7\.1'"
 
 	docker run --rm kreait/php:7.2 bash -c "php -v | grep '7\.2'"
 	docker run --rm kreait/php:7.2-dev bash -c "php -v | grep '7\.2'"
 	docker run --rm kreait/php:7.2-fpm bash -c "php -v | grep '7\.2'"
 	docker run --rm kreait/php:7.2-fpm-dev bash -c "php -v | grep '7\.2'"
 
-	docker run --rm kreait/php:7-dev bash -c "php -v | grep 'Xdebug'"
-	docker run --rm kreait/php:7-fpm-dev bash -c "php -v | grep 'Xdebug'"
+	docker run --rm kreait/php:7.3 bash -c "php -v | grep '7\.3'"
+	docker run --rm kreait/php:7.3-dev bash -c "php -v | grep '7\.3'"
+	docker run --rm kreait/php:7.3-fpm bash -c "php -v | grep '7\.3'"
+	docker run --rm kreait/php:7.3-fpm-dev bash -c "php -v | grep '7\.3'"
+
+	docker run --rm kreait/php:7.1-dev bash -c "php -v | grep 'Xdebug'"
+	docker run --rm kreait/php:7.1-fpm-dev bash -c "php -v | grep 'Xdebug'"
 	docker run --rm kreait/php:7.2-dev bash -c "php -v | grep 'Xdebug'"
 	docker run --rm kreait/php:7.2-fpm-dev bash -c "php -v | grep 'Xdebug'"
-
+	docker run --rm kreait/php:7.3-dev bash -c "php -v | grep 'Xdebug'"
+    docker run --rm kreait/php:7.3-fpm-dev bash -c "php -v | grep 'Xdebug'"
 
 .PHONY: deploy
 deploy:
-	docker push kreait/php:7
-	docker push kreait/php:7-dev
-	docker push kreait/php:7-fpm
-	docker push kreait/php:7-fpm-dev
+	docker push kreait/php:7.1
+	docker push kreait/php:7.1-dev
+	docker push kreait/php:7.1-fpm
+	docker push kreait/php:7.1-fpm-dev
 
 	docker push kreait/php:7.2
 	docker push kreait/php:7.2-dev
 	docker push kreait/php:7.2-fpm
 	docker push kreait/php:7.2-fpm-dev
+
+	docker push kreait/php:7.3
+	docker push kreait/php:7.3-dev
+	docker push kreait/php:7.3-fpm
+	docker push kreait/php:7.3-fpm-dev
 
 .PHONY: clean
 clean:

@@ -1,14 +1,10 @@
-sudo: required
-
-language: ruby
-
 services:
   - docker
 
 script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - make build
-  - make test
+  - make php
+  - make test-php
 
 after_success:
   - test $TRAVIS_BRANCH = "master" && make deploy
