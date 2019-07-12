@@ -31,11 +31,10 @@ RUN /docker/scripts/install-dev-packages.sh \
 
 ###########################################################
 
-FROM base as php-fpm
+FROM base AS base-fpm
 
 RUN apk --no-cache add php7-fpm \
-    && mv /docker/www.conf /etc/php7/php-fpm.d/www.conf \
-    && rm -rf /docker
+    && mv /docker/www.conf /etc/php7/php-fpm.d/www.conf
 
 EXPOSE 9000
 
@@ -43,13 +42,13 @@ CMD ["php-fpm7"]
 
 ###########################################################
 
-FROM base as php-fpm-dev
+FROM base-fpm as php-fpm
 
-RUN apk --no-cache add php7-fpm \
-    && mv /docker/www.conf /etc/php7/php-fpm.d/www.conf \
-    && /docker/scripts/install-dev-packages.sh \
+RUN rm -rf /docker
+
+###########################################################
+
+FROM base-fpm as php-fpm-dev
+
+RUN /docker/scripts/install-dev-packages.sh \
     && rm -rf /docker
-
-EXPOSE 9000
-
-CMD ["php-fpm7"]
