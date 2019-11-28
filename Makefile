@@ -40,7 +40,7 @@ test-php:
 	docker run --rm kreait/php:7.2-dev bash -c "php -v | grep 'Xdebug'"
 	docker run --rm kreait/php:7.2-fpm-dev bash -c "php -v | grep 'Xdebug'"
 	docker run --rm kreait/php:7.3-dev bash -c "php -v | grep 'Xdebug'"
-    docker run --rm kreait/php:7.3-fpm-dev bash -c "php -v | grep 'Xdebug'"
+	docker run --rm kreait/php:7.3-fpm-dev bash -c "php -v | grep 'Xdebug'"
 
 .PHONY: deploy
 deploy:
