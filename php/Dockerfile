@@ -6,6 +6,10 @@ FROM alpine:${ALPINE_VERSION} as base
 
 LABEL maintainer="Jérôme Gamez <jerome@kreait.com>"
 
+RUN \
+  sed -i 's/http\:\/\/dl-cdn.alpinelinux.org/https\:\/\/alpine.global.ssl.fastly.net/g' /etc/apk/repositories && \
+  apk update && apk upgrade
+
 COPY docker /docker/
 
 RUN /docker/scripts/install-packages.sh \
