@@ -25,3 +25,19 @@ The images are automatically re-built and published on a weekly basis.
 | kreait/php:7.3-dev      | [![](https://images.microbadger.com/badges/image/kreait/php:7.3-dev.svg)](https://microbadger.com/images/kreait/php:7.3-dev) |
 | kreait/php:7.3-fpm      | [![](https://images.microbadger.com/badges/image/kreait/php:7.3-fpm.svg)](https://microbadger.com/images/kreait/php:7.3-fpm) |
 | kreait/php:7.3-fpm-dev  | [![](https://images.microbadger.com/badges/image/kreait/php:7.3-fpm-dev.svg)](https://microbadger.com/images/kreait/php:7.3-fpm-dev) |
+
+## Docker Security
+
+All the images are pre-built with a user `www-data` and a group with the same name. Generally there is no need to run containers with `root` privileges, so we advise the following:
+
+**Specify a --user name and set the working directory on docker runs, e.g.:**
+
+```
+    docker run --user www-data -w /home/www-data --rm kreait/php:7.3-dev bash -c "php -v | grep 'Xdebug'"
+```
+
+Confirm it by running:
+
+```
+    docker run --user www-data -w /home/www-data --rm kreait/php:7.3-dev bash -c "id ; env" 
+```

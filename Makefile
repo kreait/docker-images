@@ -1,4 +1,7 @@
 .PHONY: all
+
+DOCKER_RUN_TEST_OPTIONS = --user www-data -w /home/www-data --rm
+
 all: php test-php
 
 .PHONY: php
@@ -20,27 +23,27 @@ php:
 
 .PHONY: test-php
 test-php:
-	docker run --rm kreait/php:7.1 bash -c "php -v | grep '7\.1'"
-	docker run --rm kreait/php:7.1-dev bash -c "php -v | grep '7\.1'"
-	docker run --rm kreait/php:7.1-fpm bash -c "php -v | grep '7\.1'"
-	docker run --rm kreait/php:7.1-fpm-dev bash -c "php -v | grep '7\.1'"
+	docker container run $(DOCKER_RUN_TEST_OPTIONS) kreait/php:7.1 bash -c "php -v | grep '7\.1'"
+	docker container run $(DOCKER_RUN_TEST_OPTIONS) kreait/php:7.1-dev bash -c "php -v | grep '7\.1'"
+	docker container run $(DOCKER_RUN_TEST_OPTIONS) kreait/php:7.1-fpm bash -c "php -v | grep '7\.1'"
+	docker container run $(DOCKER_RUN_TEST_OPTIONS) kreait/php:7.1-fpm-dev bash -c "php -v | grep '7\.1'"
 
-	docker run --rm kreait/php:7.2 bash -c "php -v | grep '7\.2'"
-	docker run --rm kreait/php:7.2-dev bash -c "php -v | grep '7\.2'"
-	docker run --rm kreait/php:7.2-fpm bash -c "php -v | grep '7\.2'"
-	docker run --rm kreait/php:7.2-fpm-dev bash -c "php -v | grep '7\.2'"
+	docker container run $(DOCKER_RUN_TEST_OPTIONS) kreait/php:7.2 bash -c "php -v | grep '7\.2'"
+	docker container run $(DOCKER_RUN_TEST_OPTIONS) kreait/php:7.2-dev bash -c "php -v | grep '7\.2'"
+	docker container run $(DOCKER_RUN_TEST_OPTIONS) kreait/php:7.2-fpm bash -c "php -v | grep '7\.2'"
+	docker container run $(DOCKER_RUN_TEST_OPTIONS) kreait/php:7.2-fpm-dev bash -c "php -v | grep '7\.2'"
 
-	docker run --rm kreait/php:7.3 bash -c "php -v | grep '7\.3'"
-	docker run --rm kreait/php:7.3-dev bash -c "php -v | grep '7\.3'"
-	docker run --rm kreait/php:7.3-fpm bash -c "php -v | grep '7\.3'"
-	docker run --rm kreait/php:7.3-fpm-dev bash -c "php -v | grep '7\.3'"
+	docker container run $(DOCKER_RUN_TEST_OPTIONS) kreait/php:7.3 bash -c "php -v | grep '7\.3'"
+	docker container run $(DOCKER_RUN_TEST_OPTIONS) kreait/php:7.3-dev bash -c "php -v | grep '7\.3'"
+	docker container run $(DOCKER_RUN_TEST_OPTIONS) kreait/php:7.3-fpm bash -c "php -v | grep '7\.3'"
+	docker container run $(DOCKER_RUN_TEST_OPTIONS) kreait/php:7.3-fpm-dev bash -c "php -v | grep '7\.3'"
 
-	docker run --rm kreait/php:7.1-dev bash -c "php -v | grep 'Xdebug'"
-	docker run --rm kreait/php:7.1-fpm-dev bash -c "php -v | grep 'Xdebug'"
-	docker run --rm kreait/php:7.2-dev bash -c "php -v | grep 'Xdebug'"
-	docker run --rm kreait/php:7.2-fpm-dev bash -c "php -v | grep 'Xdebug'"
-	docker run --rm kreait/php:7.3-dev bash -c "php -v | grep 'Xdebug'"
-	docker run --rm kreait/php:7.3-fpm-dev bash -c "php -v | grep 'Xdebug'"
+	docker container run $(DOCKER_RUN_TEST_OPTIONS) kreait/php:7.1-dev bash -c "php -v | grep 'Xdebug'"
+	docker container run $(DOCKER_RUN_TEST_OPTIONS) kreait/php:7.1-fpm-dev bash -c "php -v | grep 'Xdebug'"
+	docker container run $(DOCKER_RUN_TEST_OPTIONS) kreait/php:7.2-dev bash -c "php -v | grep 'Xdebug'"
+	docker container run $(DOCKER_RUN_TEST_OPTIONS) kreait/php:7.2-fpm-dev bash -c "php -v | grep 'Xdebug'"
+	docker container run $(DOCKER_RUN_TEST_OPTIONS) kreait/php:7.3-dev bash -c "php -v | grep 'Xdebug'"
+	docker container run $(DOCKER_RUN_TEST_OPTIONS) kreait/php:7.3-fpm-dev bash -c "php -v | grep 'Xdebug'"
 
 .PHONY: deploy
 deploy:
