@@ -16,10 +16,10 @@ php:
 	docker build --build-arg ALPINE_VERSION=3.9 --target php-fpm -t kreait/php:7.2-fpm -f php/Dockerfile php
 	docker build --build-arg ALPINE_VERSION=3.9 --target php-fpm-dev -t kreait/php:7.2-fpm-dev -f php/Dockerfile php
 
-	docker build --build-arg ALPINE_VERSION=3.10 --target php -t kreait/php:7.3 -f php/Dockerfile php
-	docker build --build-arg ALPINE_VERSION=3.10 --target php-dev -t kreait/php:7.3-dev -f php/Dockerfile php
-	docker build --build-arg ALPINE_VERSION=3.10 --target php-fpm -t kreait/php:7.3-fpm -f php/Dockerfile php
-	docker build --build-arg ALPINE_VERSION=3.10 --target php-fpm-dev -t kreait/php:7.3-fpm-dev -f php/Dockerfile php
+	docker build --build-arg ALPINE_VERSION=3.11 --target php -t kreait/php:7.3 -f php/Dockerfile php
+	docker build --build-arg ALPINE_VERSION=3.11 --target php-dev -t kreait/php:7.3-dev -f php/Dockerfile php
+	docker build --build-arg ALPINE_VERSION=3.11 --target php-fpm -t kreait/php:7.3-fpm -f php/Dockerfile php
+	docker build --build-arg ALPINE_VERSION=3.11 --target php-fpm-dev -t kreait/php:7.3-fpm-dev -f php/Dockerfile php
 
 .PHONY: test-php
 test-php:
