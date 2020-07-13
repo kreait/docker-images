@@ -25,6 +25,10 @@ The images are automatically re-built and published on a weekly basis.
 | kreait/php:7.3-dev      | [![](https://images.microbadger.com/badges/image/kreait/php:7.3-dev.svg)](https://microbadger.com/images/kreait/php:7.3-dev) |
 | kreait/php:7.3-fpm      | [![](https://images.microbadger.com/badges/image/kreait/php:7.3-fpm.svg)](https://microbadger.com/images/kreait/php:7.3-fpm) |
 | kreait/php:7.3-fpm-dev  | [![](https://images.microbadger.com/badges/image/kreait/php:7.3-fpm-dev.svg)](https://microbadger.com/images/kreait/php:7.3-fpm-dev) |
+| kreait/php:7.4          | [![](https://images.microbadger.com/badges/image/kreait/php:7.4.svg)](https://microbadger.com/images/kreait/php:7.4) |
+| kreait/php:7.4-dev      | [![](https://images.microbadger.com/badges/image/kreait/php:7.4-dev.svg)](https://microbadger.com/images/kreait/php:7.4-dev) |
+| kreait/php:7.4-fpm      | [![](https://images.microbadger.com/badges/image/kreait/php:7.4-fpm.svg)](https://microbadger.com/images/kreait/php:7.4-fpm) |
+| kreait/php:7.4-fpm-dev  | [![](https://images.microbadger.com/badges/image/kreait/php:7.4-fpm-dev.svg)](https://microbadger.com/images/kreait/php:7.4-fpm-dev) |
 
 ## Docker Security
 
