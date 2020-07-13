@@ -1,10 +1,13 @@
 ARG ALPINE_VERSION
+ARG VCS_REF
 
 ###########################################################
 
 FROM alpine:${ALPINE_VERSION} as base
 
-LABEL maintainer="Jérôme Gamez <jerome@kreait.com>"
+LABEL maintainer="Jérôme Gamez <jerome@kreait.com>" \
+      org.label-schema.vcs-ref=$VCS_REF \
+      org.label-schema.vcs-url="https://github.com/kreait/docker-images"
 
 COPY docker /docker/
 
