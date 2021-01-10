@@ -6,15 +6,15 @@ all: php test-php
 
 .PHONY: php
 php:
-	docker build --build-arg ALPINE_VERSION=3.11 --build-arg VCS_REF=`git rev-parse --short HEAD` --target php -t kreait/php:7.3 -f php/Dockerfile php
-	docker build --build-arg ALPINE_VERSION=3.11 --build-arg VCS_REF=`git rev-parse --short HEAD` --target php-dev -t kreait/php:7.3-dev -f php/Dockerfile php
-	docker build --build-arg ALPINE_VERSION=3.11 --build-arg VCS_REF=`git rev-parse --short HEAD` --target php-fpm -t kreait/php:7.3-fpm -f php/Dockerfile php
-	docker build --build-arg ALPINE_VERSION=3.11 --build-arg VCS_REF=`git rev-parse --short HEAD` --target php-fpm-dev -t kreait/php:7.3-fpm-dev -f php/Dockerfile php
+	docker build --build-arg ALPINE_VERSION=3.11 --build-arg PHP_VERSION=7.3 --build-arg VCS_REF=`git rev-parse --short HEAD` --target php -t kreait/php:7.3 -f php/Dockerfile php
+	docker build --build-arg ALPINE_VERSION=3.11 --build-arg PHP_VERSION=7.3 --build-arg VCS_REF=`git rev-parse --short HEAD` --target php-dev -t kreait/php:7.3-dev -f php/Dockerfile php
+	docker build --build-arg ALPINE_VERSION=3.11 --build-arg PHP_VERSION=7.3 --build-arg VCS_REF=`git rev-parse --short HEAD` --target php-fpm -t kreait/php:7.3-fpm -f php/Dockerfile php
+	docker build --build-arg ALPINE_VERSION=3.11 --build-arg PHP_VERSION=7.3 --build-arg VCS_REF=`git rev-parse --short HEAD` --target php-fpm-dev -t kreait/php:7.3-fpm-dev -f php/Dockerfile php
 
-	docker build --build-arg ALPINE_VERSION=edge --build-arg VCS_REF=`git rev-parse --short HEAD` --target php -t kreait/php:7.4 -f php/Dockerfile php
-	docker build --build-arg ALPINE_VERSION=edge --build-arg VCS_REF=`git rev-parse --short HEAD` --target php-dev -t kreait/php:7.4-dev -f php/Dockerfile php
-	docker build --build-arg ALPINE_VERSION=edge --build-arg VCS_REF=`git rev-parse --short HEAD` --target php-fpm -t kreait/php:7.4-fpm -f php/Dockerfile php
-	docker build --build-arg ALPINE_VERSION=edge --build-arg VCS_REF=`git rev-parse --short HEAD` --target php-fpm-dev -t kreait/php:7.4-fpm-dev -f php/Dockerfile php
+	docker build --build-arg ALPINE_VERSION=3.12 --build-arg PHP_VERSION=7.4 --build-arg VCS_REF=`git rev-parse --short HEAD` --target php -t kreait/php:7.4 -f php/Dockerfile php
+	docker build --build-arg ALPINE_VERSION=3.12 --build-arg PHP_VERSION=7.4 --build-arg VCS_REF=`git rev-parse --short HEAD` --target php-dev -t kreait/php:7.4-dev -f php/Dockerfile php
+	docker build --build-arg ALPINE_VERSION=3.12 --build-arg PHP_VERSION=7.4 --build-arg VCS_REF=`git rev-parse --short HEAD` --target php-fpm -t kreait/php:7.4-fpm -f php/Dockerfile php
+	docker build --build-arg ALPINE_VERSION=3.12 --build-arg PHP_VERSION=7.4 --build-arg VCS_REF=`git rev-parse --short HEAD` --target php-fpm-dev -t kreait/php:7.4-fpm-dev -f php/Dockerfile php
 
 .PHONY: test-php
 test-php:

@@ -1,9 +1,12 @@
 ARG ALPINE_VERSION
-ARG VCS_REF
 
 ###########################################################
 
 FROM alpine:${ALPINE_VERSION} as base
+
+ARG ALPINE_VERSION
+ARG PHP_VERSION
+ARG VCS_REF
 
 LABEL maintainer="Jérôme Gamez <jerome@kreait.com>" \
       org.label-schema.vcs-ref=$VCS_REF \
@@ -11,12 +14,14 @@ LABEL maintainer="Jérôme Gamez <jerome@kreait.com>" \
 
 COPY docker /docker/
 
-# See https://github.com/gliderlabs/docker-alpine/issues/184
-RUN \
-  sed -i 's/http\:\/\/dl-cdn.alpinelinux.org/https\:\/\/alpine.global.ssl.fastly.net/g' /etc/apk/repositories && \
-  apk update && apk upgrade
+ADD https://dl.bintray.com/php-alpine/key/php-alpine.rsa.pub /etc/apk/keys/php-alpine.rsa.pub
 
-RUN /docker/scripts/install-packages.sh \
+RUN apk --update-cache add ca-certificates \
+    && echo https://dl.bintray.com/php-alpine/v$ALPINE_VERSION/php-$PHP_VERSION >> /etc/apk/repositories \
+    # See https://github.com/gliderlabs/docker-alpine/issues/184
+    && sed -i 's/http\:\/\/dl-cdn.alpinelinux.org/https\:\/\/alpine.global.ssl.fastly.net/g' /etc/apk/repositories \
+    && apk update && apk upgrade \
+    && /docker/scripts/install-packages.sh \
     && /docker/scripts/ensure-www-data.sh \
     && mv /docker/php-entrypoint /usr/local/bin/
 

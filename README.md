@@ -5,7 +5,7 @@
 
 ## PHP
 
-Docker images built on top of Alpine Linux with the latest stable PHP Version and common and useful extensions.
+Docker images built on top of Alpine Linux with the [latest stable PHP Version and common extensions](https://github.com/codecasts/php-alpine).
 
 The images are automatically re-built and published on a weekly basis.
 
@@ -29,11 +29,11 @@ All the images are pre-built with a user `www-data` and a group with the same na
 **Specify a --user name and set the working directory on docker runs, e.g.:**
 
 ```bash
-docker run --user www-data -w /home/www-data --rm kreait/php:7.3-dev bash -c "php -v | grep 'Xdebug'"
+docker run --user www-data -w /home/www-data --rm kreait/php:7.4-dev bash -c "php -v | grep 'Xdebug'"
 ```
 
 Confirm it by running:
 
 ```bash
-docker run --user www-data -w /home/www-data --rm kreait/php:7.3-dev bash -c "id ; env" 
+docker run --user www-data -w /home/www-data --rm kreait/php:7.4-dev bash -c "id ; env" 
 ```

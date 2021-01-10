@@ -2,6 +2,6 @@
 set -ex
 
 apk --no-cache add \
-    php7-xdebug
+    php-xdebug
 
-sed -i 's/;zend_extension/zend_extension/' /etc/php7/conf.d/{50_,}xdebug.ini || true
+sed -i 's/;zend_extension/zend_extension/' /etc/php7/conf.d/00_xdebug.ini
