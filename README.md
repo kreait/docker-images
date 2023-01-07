@@ -1,9 +1,5 @@
 # Docker Images
 
-[![Build Status](https://travis-ci.org/kreait/docker-images.svg?branch=master)](https://travis-ci.org/kreait/docker-images)
-[![Discord](https://img.shields.io/discord/807679292573220925.svg?color=7289da&logo=discord)](https://discord.gg/Yacm7unBsr)
-[![Sponsor](https://img.shields.io/static/v1?logo=GitHub&label=Sponsor&message=%E2%9D%A4&color=ff69b4)](https://github.com/sponsors/jeromegamez)
-
 ## PHP
 
 Docker images built on top of Alpine Linux with the [latest stable PHP Version and common extensions](https://github.com/codecasts/php-alpine).
